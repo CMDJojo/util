@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.cmdjojo.util'
+version = '1.4-SNAPSHOT'
+
+description = """Util"""
+
+sourceCompatibility = 11
+targetCompatibility = 11
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version:'5.3.1'
+}
