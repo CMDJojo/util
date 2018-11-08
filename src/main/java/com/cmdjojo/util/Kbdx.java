@@ -1,12 +1,12 @@
 package com.cmdjojo.util;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * Some useful utils
  *
  * @author CMDJojo (Jonathan Widen)
- * @version 1.1-SNAPSHOT
+ * @version 1.1
  */
 
 public final class Kbdx {
