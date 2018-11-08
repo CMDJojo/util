@@ -18,7 +18,7 @@ public class TextTable {
     /**
      * Creates a TextTable with dynamic mode enabled
      */
-    TextTable() {
+    public TextTable() {
 
     }
 
@@ -30,7 +30,7 @@ public class TextTable {
      * @param width Amount of 'columns' in the table
      */
 
-    TextTable(int width) {
+    public TextTable(int width) {
         if (width < 0) throw new IllegalArgumentException("Width must be non-negative! Was " + width);
         dynamic = false;
         setWidth(width);
