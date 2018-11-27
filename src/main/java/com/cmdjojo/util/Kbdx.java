@@ -6,7 +6,7 @@ import javax.swing.*;
  * Some useful utils
  *
  * @author CMDJojo (Jonathan Widen)
- * @version 1.1
+ * @version 1.2
  */
 
 public final class Kbdx {
@@ -275,6 +275,80 @@ public final class Kbdx {
     }
 
     /**
+     * Prompts for an float
+     *
+     * @return The float inputed
+     */
+
+    public static float readFloat() {
+        return readFloat(true, "Input a number", "Input");
+    }
+
+    /**
+     * Prompts for an float
+     *
+     * @param force Prompt again if no float is present?
+     * @return The float inputed, or 0 if no float is present and force is false
+     */
+
+    public static float readFloat(boolean force) {
+        return readFloat(force, "Input a number", "Input");
+    }
+
+    /**
+     * Prompts for an float
+     *
+     * @param force   Prompt again if no float is present?
+     * @param message The message of the prompt
+     * @return The float inputed, or 0 if no float is present and force is false
+     */
+
+    public static float readFloat(boolean force, String message) {
+        return readFloat(force, message, "Input");
+    }
+
+    /**
+     * Prompts for an float
+     *
+     * @param force   Prompt again if no float is present?
+     * @param message The message of the prompt
+     * @param title   The title of the dialog box
+     * @return The float inputed, or 0 if no float is present and force is false
+     */
+
+    public static float readFloat(boolean force, String message, String title) {
+        String result = promptDialog(message, title);
+        try {
+            return Float.parseFloat(result);
+        } catch (NumberFormatException error) {
+            if (force)
+                return readFloat(true, message, title);
+            return 0;
+        }
+    }
+
+    /**
+     * Prompts for an float within a range (min and max incl)
+     *
+     * @param force   Prompt again if no float is present?
+     * @param message The message of the prompt
+     * @param title   The title of the dialog box
+     * @param min     The smallest float allowed
+     * @param max     The largest float allowed
+     * @return The float inputed, or 0 if no float is present and force is false
+     */
+
+    public static float readFloat(boolean force, String message, String title, float min, float max) {
+        while (true) {
+            float result = readFloat(force, message, title);
+            if (result >= min && result <= max)
+                return result;
+            else if (!force)
+                return 0;
+        }
+    }
+
+    /**
      * Prompts for an long
      *
      * @return The long inputed
@@ -341,6 +415,80 @@ public final class Kbdx {
     public static long readLong(boolean force, String message, String title, long min, long max) {
         while (true) {
             long result = readLong(force, message, title);
+            if (result >= min && result <= max)
+                return result;
+            else if (!force)
+                return 0;
+        }
+    }
+
+    /**
+     * Prompts for an double
+     *
+     * @return The double inputed
+     */
+
+    public static double readDouble() {
+        return readDouble(true, "Input a number", "Input");
+    }
+
+    /**
+     * Prompts for an double
+     *
+     * @param force Prompt again if no double is present?
+     * @return The double inputed, or 0 if no double is present and force is false
+     */
+
+    public static double readDouble(boolean force) {
+        return readDouble(force, "Input a number", "Input");
+    }
+
+    /**
+     * Prompts for an double
+     *
+     * @param force   Prompt again if no double is present?
+     * @param message The message of the prompt
+     * @return The double inputed, or 0 if no double is present and force is false
+     */
+
+    public static double readDouble(boolean force, String message) {
+        return readDouble(force, message, "Input");
+    }
+
+    /**
+     * Prompts for an double
+     *
+     * @param force   Prompt again if no double is present?
+     * @param message The message of the prompt
+     * @param title   The title of the dialog box
+     * @return The double inputed, or 0 if no double is present and force is false
+     */
+
+    public static double readDouble(boolean force, String message, String title) {
+        String result = promptDialog(message, title);
+        try {
+            return Double.parseDouble(result);
+        } catch (NumberFormatException error) {
+            if (force)
+                return readDouble(true, message, title);
+            return 0;
+        }
+    }
+
+    /**
+     * Prompts for an double within a range (min and max incl)
+     *
+     * @param force   Prompt again if no double is present?
+     * @param message The message of the prompt
+     * @param title   The title of the dialog box
+     * @param min     The smallest double allowed
+     * @param max     The largest double allowed
+     * @return The double inputed, or 0 if no double is present and force is false
+     */
+
+    public static double readDouble(boolean force, String message, String title, double min, double max) {
+        while (true) {
+            double result = readDouble(force, message, title);
             if (result >= min && result <= max)
                 return result;
             else if (!force)
