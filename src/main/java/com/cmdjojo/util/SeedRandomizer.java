@@ -19,14 +19,14 @@ public class SeedRandomizer {
      *
      * @param seed The seed to be used for all randomization
      */
-    SeedRandomizer(long seed) {
+    public SeedRandomizer(long seed) {
         setSeed(seed);
     }
 
     /**
      * Creates an instance of SeedRandomizer to create random numbers, using a random seed
      */
-    SeedRandomizer() {
+    public SeedRandomizer() {
         setSeed(r());
     }
 
@@ -36,7 +36,7 @@ public class SeedRandomizer {
      * @param seed   The seed to be used for all randomization
      * @param secure If true, this object won't allow seed reading, changes or resetting
      */
-    SeedRandomizer(long seed, boolean secure) {
+    public SeedRandomizer(long seed, boolean secure) {
         setSeed(seed);
         this.secure = secure;
     }
@@ -46,7 +46,7 @@ public class SeedRandomizer {
      *
      * @param secure If true, this object won't allow seed reading, changes or resetting
      */
-    SeedRandomizer(boolean secure) {
+    public SeedRandomizer(boolean secure) {
         setSeed(r());
         this.secure = secure;
     }
