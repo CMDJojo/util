@@ -8,7 +8,7 @@ class TextTableTest {
 
     @Test
     void testDynamic() {
-        var table = new TextTable(1);
+        TextTable table = new TextTable(1);
         table.set(0, 0, "1")
                 .setDynamic(true)
                 .set(4, 0, "SE")
@@ -25,7 +25,7 @@ class TextTableTest {
 
     @Test
     void testDynamicWithSettings() {
-        var table = new TextTable();
+        TextTable table = new TextTable();
         table.setColumnsplitter(":")
                 .setFiller('_')
                 .set(0, 0, "1")
@@ -43,7 +43,7 @@ class TextTableTest {
 
     @Test
     void testStatic() {
-        var table = new TextTable(5);
+        TextTable table = new TextTable(5);
         table.set(0, 0, "1")
                 .set(4, 0, "SE")
                 .removeColumn(4)
@@ -59,7 +59,7 @@ class TextTableTest {
 
     @Test
     void testStaticWithSettings() {
-        var table = new TextTable(2);
+        TextTable table = new TextTable(2);
         table.setWidth(4).setColumnsplitter(":")
                 .setFiller('_')
                 .set(0, 0, "1")
@@ -77,7 +77,7 @@ class TextTableTest {
 
     @Test
     void testDynamicErrors() {
-        var table = new TextTable();
+        TextTable table = new TextTable();
         assertThrows(IllegalArgumentException.class, () -> {
             table.set(-1, 2, "Yo");
         });
@@ -94,7 +94,7 @@ class TextTableTest {
 
     @Test
     void testStaticErrors() {
-        var table = new TextTable(2);
+        TextTable table = new TextTable(2);
         assertThrows(IllegalArgumentException.class, () -> {
             table.set(3, 2, "Yo");
         });
@@ -114,7 +114,7 @@ class TextTableTest {
 
     @Test
     void setterAndGetterDynamic() {
-        var table = new TextTable();
+        TextTable table = new TextTable();
         assertEquals(' ', table.getFiller(), "Get default filler");
         assertEquals('a', table.setFiller('a').getFiller(), "Set/get custom filler");
         assertEquals(" ", table.getColumnsplitter(), "Get default splitter");
@@ -125,7 +125,7 @@ class TextTableTest {
 
     @Test
     void setterAndGetterStatic() {
-        var table = new TextTable(3);
+        TextTable table = new TextTable(3);
         assertEquals(' ', table.getFiller(), "Get default filler");
         assertEquals('a', table.setFiller('a').getFiller(), "Set/get custom filler");
         assertEquals(" ", table.getColumnsplitter(), "Get default splitter");

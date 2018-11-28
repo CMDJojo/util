@@ -192,6 +192,12 @@ public class SeedRandomizer {
         return rd(s);
     }
 
+    /**
+     * Returns a random seed (a random long, if you will)
+     *
+     * @return a random seed (a random long, if you will)
+     */
+
     public static long randomSeed() {
         return new SeedRandomizer().getSeed();
     }

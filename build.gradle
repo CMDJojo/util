@@ -2,12 +2,12 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.cmdjojo'
-version = '1.7-SNAPSHOT'
+version = '2-SNAPSHOT'
 
 description = """Util"""
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }

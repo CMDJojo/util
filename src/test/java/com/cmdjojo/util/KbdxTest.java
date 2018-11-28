@@ -1,9 +1,9 @@
 package com.cmdjojo.util;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class KbdxTest {
 
@@ -55,16 +55,16 @@ class KbdxTest {
     void testRandom() {
         for (int i = 0; i < 1000; i++) {
             for (int r = 1; r < 100; r++) {
-                var random1 = Kbdx.random(r);
-                var random2 = Kbdx.random(r, r + 2);
-                var constr = Kbdx.random(r, r + 1);
+                int random1 = Kbdx.random(r);
+                int random2 = Kbdx.random(r, r + 2);
+                int constr = Kbdx.random(r, r + 1);
                 assertTrue(random1 > -1 && random1 < r, "Random with 1 param");
                 assertTrue(random2 > (r - 1) && random2 < (r + 2), "Random with 2 params");
                 assertEquals(constr, r, "Random with 1 size (static)");
 
-                var random3 = Kbdx.random(r * -1);
-                var random4 = Kbdx.random(r * -1, -1);
-                var random5 = Kbdx.random(r * -1, r);
+                int random3 = Kbdx.random(r * -1);
+                int random4 = Kbdx.random(r * -1, -1);
+                int random5 = Kbdx.random(r * -1, r);
                 assertTrue(random3 > r * -1 && random3 <= 0, "Random with 1 param, negative");
                 if (r > 1) {
                     assertTrue(random4 > r * -1 && random4 <= -1, "Random with 2 params, negative");
@@ -111,7 +111,7 @@ class KbdxTest {
         assertTrue(Kbdx.contains(arr3, "Hello"), "Contains, string array");
 
         Object[] arr4 = new Object[2];
-        var sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         arr4[0] = sb;
         arr4[1] = "Hello";
         assertFalse(Kbdx.contains(arr4, new StringBuilder()), "Contains, object array");

@@ -1,10 +1,10 @@
 package com.cmdjojo.util;
 
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class SeedRandomizerTest {
@@ -12,8 +12,8 @@ public class SeedRandomizerTest {
     @DisplayName("Same seed gets same next values")
     void testNextVals() {
         for (int i = 0; i < 10000; i++) {
-            var random1 = new SeedRandomizer();
-            var random2 = new SeedRandomizer(random1.getSeed());
+            SeedRandomizer random1 = new SeedRandomizer();
+            SeedRandomizer random2 = new SeedRandomizer(random1.getSeed());
             assertEquals(random1.nextDouble(), random2.nextDouble(), "Same first double with same seed");
             assertEquals(random1.nextLong(), random2.nextLong(), "Same first long with same seed");
             assertEquals(random1.nextInt(), random2.nextInt(), "Same first int with same seed");
@@ -27,11 +27,11 @@ public class SeedRandomizerTest {
     @DisplayName("Same seed gets same coord value")
     void testCoords() {
         for (int i = 0; i < 10000; i++) {
-            var random1 = new SeedRandomizer();
-            var random2 = new SeedRandomizer(random1.getSeed());
-            var x = Kbdx.random(Integer.MIN_VALUE + 1, Integer.MAX_VALUE - 1);
-            var y = Kbdx.random(Integer.MIN_VALUE + 1, Integer.MAX_VALUE - 1);
-            var startLong = random1.coordLong(x, y);
+            SeedRandomizer random1 = new SeedRandomizer();
+            SeedRandomizer random2 = new SeedRandomizer(random1.getSeed());
+            int x = Kbdx.random(Integer.MIN_VALUE + 1, Integer.MAX_VALUE - 1);
+            int y = Kbdx.random(Integer.MIN_VALUE + 1, Integer.MAX_VALUE - 1);
+            long startLong = random1.coordLong(x, y);
             assertEquals(random1.coordLong(x, y), random2.coordLong(x, y), "Same long with same seed and coords");
             assertEquals(startLong, random2.coordLong(x, y), "Same long with same seed and coords");
             assertNotEquals(startLong, random2.coordLong(x + 1, y), "Different long with same seed but diffrent coords");

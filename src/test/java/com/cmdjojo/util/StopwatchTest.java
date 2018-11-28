@@ -1,13 +1,13 @@
 package com.cmdjojo.util;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class StopwatchTest {
     private Stopwatch s;
@@ -57,12 +57,12 @@ class StopwatchTest {
         assertNull(s.getNext(s.index("TestTimer4")), "Next on undefined");
 
         //Make sure all items are looped by iteratable
-        var l1 = new ArrayList<String>();
+        ArrayList<String> l1 = new ArrayList<>();
         l1.add("TestTimer2");
         l1.add("TestTimer3");
         l1.add("TestTimer1");
 
-        var l2 = new ArrayList<String>();
+        ArrayList<String> l2 = new ArrayList<>();
         for (String name : s) {
             l2.add(name);
         }
@@ -85,7 +85,7 @@ class StopwatchTest {
         assertEquals(220300, s.compareMs("TestTimer1", "TestTimer3"), "Comapring other timer");
 
         for (int i = 0; i < 100; i++) {
-            var randomdiff = Kbdx.random(2000, 345384583);
+            int randomdiff = Kbdx.random(2000, 345384583);
             s.set("1timer" + i);
             s.set("2timer" + i, s.get("1timer" + i) + randomdiff);
             assertEquals(randomdiff, s.compareMs("1timer" + i, "2timer" + i), "Comparing with random diff");

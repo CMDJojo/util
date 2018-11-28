@@ -219,13 +219,13 @@ public class TextTable {
 
     @Override
     public String toString() {
-        var sb = new StringBuilder(); //main string builder
-        var l = highestIndex(data);
+        StringBuilder sb = new StringBuilder(); //main string builder
+        int l = highestIndex(data);
         for (int c = 0; c <= l; c++) {
-            var rb = new StringBuilder(); //row builder
+            StringBuilder rb = new StringBuilder(); //row builder
             for (HashMap<Integer, String> col : data) {
-                var item = col.getOrDefault(c, "");
-                var bb = new StringBuilder(item);
+                String item = col.getOrDefault(c, "");
+                StringBuilder bb = new StringBuilder(item);
                 while (bb.length() < widest(col)) bb.append(filler); //fill until its wide enough
                 rb.append(bb);
                 rb.append(columnsplitter);
