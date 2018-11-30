@@ -1,8 +1,11 @@
 package com.cmdjojo.util;
 
-import static com.cmdjojo.util.Kbdx.msToString;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 
-import java.util.*;
+import static com.cmdjojo.util.Kbdx.msToString;
 
 /**
  * Can compare time, set timers etc. Depends on Kbdx class (also by CMDJojo)
@@ -369,7 +372,7 @@ public final class Stopwatch implements Iterable<String> {
      * @return A string containing comparasions for all keys
      */
     public String compareNextAll() {
-        return this.compareNextAll(0);
+        return this.compareNextAll(-1);
     }
 
     /**
