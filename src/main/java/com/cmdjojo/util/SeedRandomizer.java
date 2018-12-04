@@ -1,12 +1,15 @@
 package com.cmdjojo.util;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 /**
  * Generates random values by seed. Can also generate by seed and coordinates
  *
  * @author CMDJojo
- * @version 1.1-SNAPSHOT
+ * @version 1.2-SNAPSHOT
  */
 
 public class SeedRandomizer {
@@ -304,6 +307,24 @@ public class SeedRandomizer {
         return lbetween(s, min, max);
     }
 
+    private static long hashLong(long t) {
+        long ret = 0;
+        String tstr = "" + t;
+        MessageDigest digest;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(
+                    tstr.getBytes(StandardCharsets.UTF_8));
+            for (int i = 0; i < 8 && i < encodedhash.length; i++) {
+                ret += encodedhash[i];
+                ret = ret << 8;
+            }
+            return ret;
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private long coordToLong(int x, int y) {
         /*
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
@@ -311,7 +332,7 @@ public class SeedRandomizer {
         x << 32
         add y
          */
-        return ((long) x << 32) + y;
+        return hashLong(((long) x << 32) + y);
     }
 
     private long coordToLong(int x, int y, int z) {
@@ -330,7 +351,7 @@ public class SeedRandomizer {
         long transform = coordToLong(x, y);
         transform = transform ^ (z << 16);
         transform = transform ^ ((long) (z >>> 16) << 48);
-        return transform;
+        return hashLong(transform);
     }
 
     private long coordToLong(int x, int y, int z, int a) {
@@ -348,7 +369,7 @@ public class SeedRandomizer {
 
          */
         long t2 = ((long) a << 48) + ((long) a >>> 16) + ((long) z << 16);
-        return coordToLong(x, y) ^ t2;
+        return hashLong(coordToLong(x, y) ^ t2);
     }
 
     private static long lbetween(long d, long min, long max) {
