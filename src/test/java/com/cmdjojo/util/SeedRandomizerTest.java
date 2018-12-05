@@ -36,14 +36,14 @@ public class SeedRandomizerTest {
             assertEquals(startLong, random2.coordLong(x, y), "Same long with same seed and coords");
             assertNotEquals(startLong, random2.coordLong(x + 1, y), "Different long with same seed but diffrent coords");
 
-            assertEquals(random1.coordBetween(x, y, 234, 232423423), random2.coordBetween(x, y, 234, 232423423), "Same between with same seed and coords");
-            assertNotEquals(random1.coordBetween(x, y, 1, 10000000), random2.coordBetween(x + 1, y, 1, 10000000), "Diffrent between with same seed but diffrent coords");
+            assertEquals(random1.coordBetween(234, 232423423, x, y), random2.coordBetween(234, 232423423, x, y), "Same between with same seed and coords");
+            assertNotEquals(random1.coordBetween(1, 10000000, x, y), random2.coordBetween(1, 10000000, x + 1, y), "Diffrent between with same seed but diffrent coords");
 
             assertEquals(random1.coordDouble(x, y), random2.coordDouble(x, y), "Same double with same seed and coords");
             assertNotEquals(random1.coordDouble(x, y), random2.coordDouble(x, y + 1), "Diffrent double with same seed but diffrent coords");
 
-            assertTrue(random1.coordBetween(x, y, 1, 10) < 10, "Between always lower than upper bound");
-            assertTrue(random1.coordBetween(x, y, 1, 10) > 0, "Between always higher than lower bound");
+            assertTrue(random1.coordBetween(1, 10, x, y) < 10, "Between always lower than upper bound");
+            assertTrue(random1.coordBetween(1, 10, x, y) > 0, "Between always higher than lower bound");
 
         }
     }
