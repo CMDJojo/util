@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'com.cmdjojo'
-version = '3-SNAPSHOT'
+version = '3.1-SNAPSHOT'
 
 description = """Util"""
 

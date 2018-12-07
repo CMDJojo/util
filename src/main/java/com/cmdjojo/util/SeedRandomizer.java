@@ -6,11 +6,12 @@ import java.util.Random;
  * Generates random values by seed. Can also generate by seed and coordinates
  *
  * @author CMDJojo
- * @version 2-SNAPSHOT
+ * @version 2.1-SNAPSHOT
  */
 
 public class SeedRandomizer {
     private long seed;
+    private long rawseed;
     private Random generator;
     private boolean secure;
 
@@ -136,7 +137,7 @@ public class SeedRandomizer {
 
     public long getSeed() {
         if (secure) return 0;
-        return this.seed;
+        return this.rawseed;
     }
 
     /**
@@ -147,7 +148,17 @@ public class SeedRandomizer {
      */
     public void setSeed(long seed) {
         if (secure) return;
-        this.seed = seed;
+        this.rawseed = seed;
+        long tseed = seed;
+        for (int i = 0; i < 10; i++) {
+            byte[] a = new byte[8];
+            for (int j = 0; j < 8; j++) {
+                a[7 - j] = (byte) (tseed & 0xFF);
+                tseed = tseed >>> 8;
+            }
+            tseed = longHash(a);
+        }
+        this.seed = tseed;
         reset();
     }
 
