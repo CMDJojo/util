@@ -7,7 +7,7 @@ import java.util.HashMap;
  * TextTable class can make a table that can be converted to string. When used in monospace (as in console), cells will fit their width to the widest cell in the column.
  *
  * @author CMDJojo
- * @version 1.0-SNAPSHOT
+ * @version 1.1-SNAPSHOT
  */
 public class TextTable {
     private boolean dynamic = true;
@@ -238,14 +238,17 @@ public class TextTable {
     }
 
     /**
-     * Checks if two TextTables' toString() matches
+     * Checks if two TextTables' toString() matches, and if they have the same dynamic mode, column splitter and filler
      *
      * @param t Target table
-     * @return true if their toString() results matches
+     * @return true if their toString() results matches and their properties are equal
      */
 
     public boolean equals(TextTable t) {
-        return t.toString().equals(this.toString());
+        return t.toString().equals(this.toString())
+                && t.getDynamic() == dynamic
+                && t.getColumnsplitter().equals(columnsplitter)
+                && t.getFiller() == filler;
     }
 
     private int widest(HashMap<Integer, String> d) {
