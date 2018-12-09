@@ -78,38 +78,20 @@ class TextTableTest {
     @Test
     void testDynamicErrors() {
         TextTable table = new TextTable();
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.set(-1, 2, "Yo");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.set(2, -1, "Yo");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.setWidth(-1);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.pruneRows(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> table.set(-1, 2, "Yo"));
+        assertThrows(IllegalArgumentException.class, () -> table.set(2, -1, "Yo"));
+        assertThrows(IllegalArgumentException.class, () -> table.setWidth(-1));
+        assertThrows(IllegalArgumentException.class, () -> table.pruneRows(-1));
     }
 
     @Test
     void testStaticErrors() {
         TextTable table = new TextTable(2);
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.set(3, 2, "Yo");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.set(-1, 2, "Yo");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.set(2, -1, "Yo");
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.setWidth(-1);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            table.pruneRows(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> table.set(3, 2, "Yo"));
+        assertThrows(IllegalArgumentException.class, () -> table.set(-1, 2, "Yo"));
+        assertThrows(IllegalArgumentException.class, () -> table.set(2, -1, "Yo"));
+        assertThrows(IllegalArgumentException.class, () -> table.setWidth(-1));
+        assertThrows(IllegalArgumentException.class, () -> table.pruneRows(-1));
     }
 
     @Test
@@ -130,7 +112,7 @@ class TextTableTest {
         assertEquals('a', table.setFiller('a').getFiller(), "Set/get custom filler");
         assertEquals(" ", table.getColumnsplitter(), "Get default splitter");
         assertEquals("ABC", table.setColumnsplitter("ABC").getColumnsplitter(), "Set/get custom splitter");
-        assertFalse(table.getDynamic(), "Default dynamid");
+        assertFalse(table.getDynamic(), "Default dynamic");
         assertTrue(table.setDynamic(true).getDynamic(), "Setting dynamic");
     }
 }
