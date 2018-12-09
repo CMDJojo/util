@@ -226,7 +226,8 @@ public class TextTable {
             for (HashMap<Integer, String> col : data) {
                 String item = col.getOrDefault(c, "");
                 StringBuilder bb = new StringBuilder(item);
-                while (bb.length() < widest(col)) bb.append(filler); //fill until its wide enough
+                int colwidth = widest(col);
+                while (bb.length() < colwidth) bb.append(filler); //fill until its wide enough
                 rb.append(bb);
                 rb.append(columnsplitter);
             }
