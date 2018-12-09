@@ -36,6 +36,24 @@ public class TextTable {
         setWidth(width);
     }
 
+    private static int widest(HashMap<Integer, String> d) {
+        int l = 0;
+        for (String s : d.values()) {
+            if (s.length() > l) l = s.length();
+        }
+        return l;
+    }
+
+    private static int highestIndex(ArrayList<HashMap<Integer, String>> d) {
+        int l = 0;
+        for (HashMap<Integer, String> a : d) {
+            for (Integer i : a.keySet()) {
+                if (i > l) l = i;
+            }
+        }
+        return l;
+    }
+
     /**
      * Gets dynamic mode
      *
@@ -249,23 +267,5 @@ public class TextTable {
                 && t.getDynamic() == dynamic
                 && t.getColumnsplitter().equals(columnsplitter)
                 && t.getFiller() == filler;
-    }
-
-    private int widest(HashMap<Integer, String> d) {
-        int l = 0;
-        for (String s : d.values()) {
-            if (s.length() > l) l = s.length();
-        }
-        return l;
-    }
-
-    private int highestIndex(ArrayList<HashMap<Integer, String>> d) {
-        int l = 0;
-        for (HashMap<Integer, String> a : d) {
-            for (Integer i : a.keySet()) {
-                if (i > l) l = i;
-            }
-        }
-        return l;
     }
 }
