@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import static com.cmdjojo.util.Kbdx.msToString;
-
 /**
  * Can compare time, set timers etc. Depends on Kbdx class (also by CMDJojo)
  *
@@ -293,7 +291,7 @@ public final class Stopwatch implements Iterable<String> {
      */
 
     public String compare(long time1, long time2, int args) {
-        return msToString(this.compareMs(time1, time2), args);
+        return Time.ms(this.compareMs(time1, time2)).toString(Time.Unit.min_id(), Time.Unit.max_id(), args, false, true);
     }
 
     /**

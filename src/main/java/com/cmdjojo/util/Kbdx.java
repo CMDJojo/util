@@ -1,6 +1,7 @@
 package com.cmdjojo.util;
 
 import javax.swing.*;
+import java.util.function.Predicate;
 
 /**
  * Some useful utils
@@ -35,8 +36,11 @@ public final class Kbdx {
      *
      * @param input The value to convert to string
      * @return String, ex "1h 32m 2s 313ms"
+     * @deprecated All {@code Kbdx} millisecond operations are now replaced with
+     * the more advanced and better configurable {@link Time Time} class.
+     * Use {@linkplain Time#Time(long)} and {@linkplain Time#toString()} instead
      */
-
+    @Deprecated
     public static String msToString(long input) {
         return msToString(input, -1);
     }
@@ -47,7 +51,11 @@ public final class Kbdx {
      * @param input The value to convert to string
      * @param args  Max amount of args to be displayed, or -1 to display all
      * @return String, ex "1h 32m 2s 313ms"
+     * @deprecated All {@code Kbdx} millisecond operations are now replaced with
+     * the more advanced and better configurable {@link Time Time} class.
+     * Use {@linkplain Time#Time(long)} and {@linkplain Time#toString(Time.Unit, Time.Unit)} instead
      */
+    @Deprecated
     public static String msToString(long input, int args) {
         int maxArgs = 6;
         if (args == -1)
@@ -139,7 +147,11 @@ public final class Kbdx {
      * Shows a message dialog with desired text and default title "Message"
      *
      * @param text The text to display
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#message(String)}
      */
+    @Deprecated
     public static void message(String text) {
         message(text, "Message");
     }
@@ -149,7 +161,11 @@ public final class Kbdx {
      *
      * @param text  The text to display
      * @param title The title of the dialog box
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#message(String, String)}
      */
+    @Deprecated
     public static void message(String text, String title) {
         JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
     }
@@ -159,12 +175,15 @@ public final class Kbdx {
      *
      * @param force   Re-prompt if cancelled?
      * @param options String array with options avalible for the dropdown menu
-     * @return The option selected when continuing, or null if none and force is
+     * @return The buttons selected when continuing, or null if none and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#dropdown(String, String, Object[])}
      */
-
+    @Deprecated
     public static String dropdown(boolean force, String[] options) {
-        return dropdown(force, options, "Select an option from the menu", "Select an option");
+        return dropdown(force, options, "Select an buttons from the menu", "Select an buttons");
     }
 
     /**
@@ -173,12 +192,15 @@ public final class Kbdx {
      * @param force   Re-prompt if cancelled?
      * @param options String array with options avalible for the dropdown menu
      * @param message The message in the dialog box
-     * @return The option selected when continuing, or null if none and force is
+     * @return The buttons selected when continuing, or null if none and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#dropdown(String, String, Object[])}
      */
-
+    @Deprecated
     public static String dropdown(boolean force, String[] options, String message) {
-        return dropdown(force, options, message, "Select an option");
+        return dropdown(force, options, message, "Select an buttons");
     }
 
     /**
@@ -188,10 +210,13 @@ public final class Kbdx {
      * @param options String array with options avalible for the dropdown menu
      * @param message The message in the dialog box
      * @param title   The title of the dialog box
-     * @return The option selected when continuing, or null if none and force is
+     * @return The buttons selected when continuing, or null if none and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#dropdown(String, String, Object[])}
      */
-
+    @Deprecated
     public static String dropdown(boolean force, String[] options, String message, String title) {
         String answer = (String) JOptionPane.showInputDialog(null, message, title, JOptionPane.QUESTION_MESSAGE, null,
                 options, options[0]);
@@ -204,8 +229,11 @@ public final class Kbdx {
      * Prompts for an integer
      *
      * @return The integer inputed
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getInt()}
      */
-
+    @Deprecated
     public static int readInt() {
         return readInt(true, "Input a number", "Input");
     }
@@ -215,8 +243,11 @@ public final class Kbdx {
      *
      * @param force Prompt again if no integer is present?
      * @return The integer inputed, or 0 if no integer is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getInt()}
      */
-
+    @Deprecated
     public static int readInt(boolean force) {
         return readInt(force, "Input a number", "Input");
     }
@@ -227,8 +258,11 @@ public final class Kbdx {
      * @param force   Prompt again if no integer is present?
      * @param message The message of the prompt
      * @return The integer inputed, or 0 if no integer is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getInt(String)}
      */
-
+    @Deprecated
     public static int readInt(boolean force, String message) {
         return readInt(force, message, "Input");
     }
@@ -240,8 +274,11 @@ public final class Kbdx {
      * @param message The message of the prompt
      * @param title   The title of the dialog box
      * @return The integer inputed, or 0 if no integer is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getInt(String, String)}
      */
-
+    @Deprecated
     public static int readInt(boolean force, String message, String title) {
         String result = promptDialog(message, title);
         try {
@@ -262,8 +299,12 @@ public final class Kbdx {
      * @param min     The smallest integer allowed
      * @param max     The largest integer allowed
      * @return The integer inputed, or 0 if no integer is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getInt(String, String)} and
+     * {@linkplain com.cmdjojo.util.dialog.Dialog#setFilter(Predicate)}
      */
-
+    @Deprecated
     public static int readInt(boolean force, String message, String title, int min, int max) {
         while (true) {
             int result = readInt(force, message, title);
@@ -278,8 +319,11 @@ public final class Kbdx {
      * Prompts for an float
      *
      * @return The float inputed
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getFloat()}
      */
-
+    @Deprecated
     public static float readFloat() {
         return readFloat(true, "Input a number", "Input");
     }
@@ -289,8 +333,11 @@ public final class Kbdx {
      *
      * @param force Prompt again if no float is present?
      * @return The float inputed, or 0 if no float is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getFloat()}
      */
-
+    @Deprecated
     public static float readFloat(boolean force) {
         return readFloat(force, "Input a number", "Input");
     }
@@ -301,8 +348,11 @@ public final class Kbdx {
      * @param force   Prompt again if no float is present?
      * @param message The message of the prompt
      * @return The float inputed, or 0 if no float is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getFloat(String)}
      */
-
+    @Deprecated
     public static float readFloat(boolean force, String message) {
         return readFloat(force, message, "Input");
     }
@@ -314,8 +364,11 @@ public final class Kbdx {
      * @param message The message of the prompt
      * @param title   The title of the dialog box
      * @return The float inputed, or 0 if no float is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getFloat(String, String)}
      */
-
+    @Deprecated
     public static float readFloat(boolean force, String message, String title) {
         String result = promptDialog(message, title);
         try {
@@ -336,8 +389,12 @@ public final class Kbdx {
      * @param min     The smallest float allowed
      * @param max     The largest float allowed
      * @return The float inputed, or 0 if no float is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getFloat(String, String)} and
+     * {@linkplain com.cmdjojo.util.dialog.Dialog#setFilter(Predicate)}
      */
-
+    @Deprecated
     public static float readFloat(boolean force, String message, String title, float min, float max) {
         while (true) {
             float result = readFloat(force, message, title);
@@ -352,8 +409,11 @@ public final class Kbdx {
      * Prompts for an long
      *
      * @return The long inputed
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getLong()}
      */
-
+    @Deprecated
     public static long readLong() {
         return readLong(true, "Input a number", "Input");
     }
@@ -363,8 +423,11 @@ public final class Kbdx {
      *
      * @param force Prompt again if no long is present?
      * @return The long inputed, or 0 if no long is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getLong()}
      */
-
+    @Deprecated
     public static long readLong(boolean force) {
         return readLong(force, "Input a number", "Input");
     }
@@ -375,8 +438,11 @@ public final class Kbdx {
      * @param force   Prompt again if no long is present?
      * @param message The message of the prompt
      * @return The long inputed, or 0 if no long is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getLong(String)}
      */
-
+    @Deprecated
     public static long readLong(boolean force, String message) {
         return readLong(force, message, "Input");
     }
@@ -388,8 +454,11 @@ public final class Kbdx {
      * @param message The message of the prompt
      * @param title   The title of the dialog box
      * @return The long inputed, or 0 if no long is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getLong(String, String)}
      */
-
+    @Deprecated
     public static long readLong(boolean force, String message, String title) {
         String result = promptDialog(message, title);
         try {
@@ -410,8 +479,12 @@ public final class Kbdx {
      * @param min     The smallest long allowed
      * @param max     The largest long allowed
      * @return The long inputed, or 0 if no long is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getLong(String, String)} and
+     * {@linkplain com.cmdjojo.util.dialog.Dialog#setFilter(Predicate)}
      */
-
+    @Deprecated
     public static long readLong(boolean force, String message, String title, long min, long max) {
         while (true) {
             long result = readLong(force, message, title);
@@ -426,8 +499,11 @@ public final class Kbdx {
      * Prompts for an double
      *
      * @return The double inputed
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getDouble()}
      */
-
+    @Deprecated
     public static double readDouble() {
         return readDouble(true, "Input a number", "Input");
     }
@@ -437,8 +513,11 @@ public final class Kbdx {
      *
      * @param force Prompt again if no double is present?
      * @return The double inputed, or 0 if no double is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getDouble()}
      */
-
+    @Deprecated
     public static double readDouble(boolean force) {
         return readDouble(force, "Input a number", "Input");
     }
@@ -449,8 +528,11 @@ public final class Kbdx {
      * @param force   Prompt again if no double is present?
      * @param message The message of the prompt
      * @return The double inputed, or 0 if no double is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getDouble(String)}
      */
-
+    @Deprecated
     public static double readDouble(boolean force, String message) {
         return readDouble(force, message, "Input");
     }
@@ -462,8 +544,11 @@ public final class Kbdx {
      * @param message The message of the prompt
      * @param title   The title of the dialog box
      * @return The double inputed, or 0 if no double is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getDouble(String, String)}
      */
-
+    @Deprecated
     public static double readDouble(boolean force, String message, String title) {
         String result = promptDialog(message, title);
         try {
@@ -484,8 +569,12 @@ public final class Kbdx {
      * @param min     The smallest double allowed
      * @param max     The largest double allowed
      * @return The double inputed, or 0 if no double is present and force is false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#getDouble(String, String)} and
+     * {@linkplain com.cmdjojo.util.dialog.Dialog#setFilter(Predicate)}
      */
-
+    @Deprecated
     public static double readDouble(boolean force, String message, String title, double min, double max) {
         while (true) {
             double result = readDouble(force, message, title);
@@ -502,8 +591,11 @@ public final class Kbdx {
      * @param force Prompt again if no string is present?
      * @return The integer inputed, or null if no string is present and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#string()}
      */
-
+    @Deprecated
     public static String readString(boolean force) {
         return readString(force, "Input a string", "Input");
     }
@@ -515,8 +607,11 @@ public final class Kbdx {
      * @param message The message of the prompt
      * @return The string inputed, or null if no string is present and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#string(String)}
      */
-
+    @Deprecated
     public static String readString(boolean force, String message) {
         return readString(force, message, "Input");
     }
@@ -529,8 +624,11 @@ public final class Kbdx {
      * @param title   The title of the dialog box
      * @return The string inputed, or null if no string is present and force is
      * false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#string(String, String)}
      */
-
+    @Deprecated
     public static String readString(boolean force, String message, String title) {
         String result = promptDialog(message, title);
         if (force && (result == null || result.equals("")))
@@ -543,8 +641,11 @@ public final class Kbdx {
      *
      * @return String matching the name of the button pressed, or null if "esc" was
      * pressed
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#buttons()}
      */
-
+    @Deprecated
     public static String readOption() {
         String[] options = {"Yes", "No"};
         return readOption(false, "Continue?", "Continue?", options);
@@ -556,8 +657,11 @@ public final class Kbdx {
      * @param force Re-prompt if "esc" key was pressed?
      * @return String matching the name of the button pressed, or null if "esc" was
      * pressed and force == false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#buttons()}
      */
-
+    @Deprecated
     public static String readOption(boolean force) {
         String[] options = {"Yes", "No"};
         return readOption(force, "Continue?", "Continue?", options);
@@ -570,8 +674,11 @@ public final class Kbdx {
      * @param message The message in the box
      * @return String matching the name of the button pressed, or null if "esc" was
      * pressed and force == false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#buttons(String)}
      */
-
+    @Deprecated
     public static String readOption(boolean force, String message) {
         String[] options = {"Yes", "No"};
         return readOption(force, message, "Continue?", options);
@@ -585,8 +692,11 @@ public final class Kbdx {
      * @param title   The title of the prompt
      * @return String matching the name of the button pressed, or null if "esc" was
      * pressed and force == false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#buttons(String, String)}
      */
-
+    @Deprecated
     public static String readOption(boolean force, String message, String title) {
         String[] options = {"Yes", "No"};
         return readOption(force, message, title, options);
@@ -601,8 +711,11 @@ public final class Kbdx {
      * @param options String[] with the buttons
      * @return String matching the name of the button pressed, or null if "esc" was
      * pressed and force == false
+     * @deprecated All {@code Kbdx} dialog boxes and input boxed are now replaced
+     * with the more advanced {@link com.cmdjojo.util.dialog.Dialog dialog} class.
+     * Use {@linkplain com.cmdjojo.util.dialog.Dialog#buttons(String, String, Object[])}
      */
-
+    @Deprecated
     public static String readOption(boolean force, String message, String title, String[] options) {
         int answer = JOptionPane.showOptionDialog(null, message, title, JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -640,7 +753,7 @@ public final class Kbdx {
      * <ul>
      * <li> If min and max are positive (the normal case), the range includes the lowest value but not the highest
      * <li> If min and max are negative, the range includes the highest value (the value closest to 0), but excludes the lowest value (the most negative value)
-     * <li> If one value of min and max is negative, and the other one is positive, both is excluded
+     * <li> If one value of min and max is negative, and the other one is positive, both is development
      * </ul>
      * </ul>
      * You may switch arguments, so min &gt; max, then the highest one will be excl and the lowest will be incl
@@ -692,8 +805,10 @@ public final class Kbdx {
      * @param target The target to search for
      * @return True if there is at least one element matching target, otherwise
      * false
+     * @deprecated All array-related utility operations are moved to
+     * {@linkplain ArrayUtil}. Use {@linkplain ArrayUtil#has(int[], int)}
      */
-
+    @Deprecated
     public static boolean contains(int[] array, int target) {
         for (int x : array) {
             if (x == target)
@@ -709,8 +824,10 @@ public final class Kbdx {
      * @param target The target to search for
      * @return True if there is at least one element matching target, otherwise
      * false
+     * @deprecated All array-related utility operations are moved to
+     * {@linkplain ArrayUtil}. Use {@linkplain ArrayUtil#has(long[], long)}
      */
-
+    @Deprecated
     public static boolean contains(long[] array, long target) {
         for (long x : array) {
             if (x == target)
@@ -727,8 +844,10 @@ public final class Kbdx {
      * @param target The target to search for
      * @return True if there is at least one element matching target, otherwise
      * false
+     * @deprecated All array-related utility operations are moved to
+     * {@linkplain ArrayUtil}. Use {@linkplain ArrayUtil#has(Object[], Object)}
      */
-
+    @Deprecated
     public static boolean contains(Object[] array, Object target) {
         for (Object x : array) {
             if (x.equals(target))

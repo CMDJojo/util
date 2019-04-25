@@ -57,7 +57,7 @@ public class SeedRandomizer {
      * @return a random seed (a random long, if you will)
      * @deprecated use randomLong()
      */
-
+    @Deprecated
     public static long randomSeed() {
         return randomLong();
     }
