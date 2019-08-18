@@ -12,6 +12,7 @@ import java.util.Iterator;
  * @version 1.2-SNAPSHOT
  */
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 public final class Stopwatch implements Iterable<String> {
 
     /**
@@ -330,10 +331,10 @@ public final class Stopwatch implements Iterable<String> {
      * Compares a key with the next key, and their values
      *
      * @param name Key
-     * @return Comparasion between the key value and next value
+     * @return Comparision between the key value and next value
      */
     public String compareNext(String name) {
-        return compareNext(name, 0);
+        return compareNext(name, -1);
     }
 
     /**
